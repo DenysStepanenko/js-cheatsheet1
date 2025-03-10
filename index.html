@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Шпаргалка по JavaScript</title>
+
+<body>
+
+    <header>
+        <h1>Шпаргалка по JavaScript</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#data-types">Типы данных</a></li>
+            <li><a href="#logic">Логические операторы</a></li>
+            <li><a href="#loops">Циклы</a></li>
+            <li><a href="#functions">Функции</a></li>
+            <li><a href="#methods">Методы строк</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="data-types">
+            <h2>Типы данных</h2>
+            <ul>
+                <li><b>boolean</b> — логический (`true` / `false`)</li>
+                <li><b>string</b> — строка (текст)</li>
+                <li><b>number</b> — числа (целые и дробные)</li>
+                <li><b>null</b> — намеренное отсутствие данных</li>
+                <li><b>undefined</b> — переменная не имеет значения</li>
+                <li><b>symbol</b> — уникальный идентификатор</li>
+                <li><b>bigint</b> — очень большие целые числа</li>
+            </ul>
+        </section>
+
+        <section id="logic">
+            <h2>Логические операторы</h2>
+            <ul>
+                <li><b>!</b> — НЕ (инверсия), пример: <code>!true → false</code></li>
+                <li><b>||</b> — ИЛИ, вернёт <code>true</code>, если хотя бы одно true</li>
+                <li><b>&&</b> — И, вернёт <code>true</code>, если все условия верны</li>
+            </ul>
+        </section>
+
+        <section id="loops">
+            <h2>Циклы</h2>
+            <h3>Цикл for</h3>
+            <pre><code>
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+            </code></pre>
+
+            <h3>Цикл while</h3>
+            <pre><code>
+let i = 1;
+while (i <= 5) {
+    console.log(i);
+    i++;
+}
+            </code></pre>
+
+            <h3>Цикл do...while</h3>
+            <pre><code>
+let i = 0;
+do {
+    console.log("Count: " + i);
+    i++;
+} while (i < 5);
+            </code></pre>
+        </section>
+
+        <section id="functions">
+            <h2>Функции</h2>
+            <h3>Сумма чисел от 1 до N</h3>
+            <pre><code>
+function calculateTotal(number) {
+    let total = 0, i = 1;
+    while (i <= number) {
+        total += i;
+        i++;
+    }
+    return total;
+}
+            </code></pre>
+
+            <h3>Сумма чётных чисел</h3>
+            <pre><code>
+function calculateEvenTotal(number) {
+    let sum = 0;
+    for (let i = 1; i <= number; i++) {
+        if (i % 2 === 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+            </code></pre>
+        </section>
+
+        <section id="methods">
+            <h2>Методы строк</h2>
+            <ul>
+                <li><b>startsWith()</b> — проверяет, начинается ли строка с указанного текста</li>
+                <li><b>endsWith()</b> — проверяет, заканчивается ли строка указанным текстом</li>
+                <li><b>includes()</b> — проверяет, содержится ли подстрока в строке</li>
+                <li><b>slice()</b> — вырезает часть строки</li>
+                <li><b>toUpperCase() / toLowerCase()</b> — изменение регистра</li>
+                <li><b>trim()</b> — убирает пробелы по краям</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Шпаргалка по JavaScript</p>
+    </footer>
+
+</body>
+
+</html>
