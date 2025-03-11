@@ -21,13 +21,47 @@ header {
 nav ul {
   background: #161b22;
   padding: 10px;
-  text-align: center;
+  text-align: start;
   list-style: none;
 }
 
 nav ul li {
   display: inline;
   margin: 0 15px;
+  position: relative;
+}
+
+nav ul li ul.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #161b22;
+  padding: 10px 0;
+  list-style: none;
+  min-width: 200px;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+nav ul li:hover ul.submenu {
+  display: block;
+}
+
+nav ul li ul.submenu li {
+  display: block;
+  margin: 0;
+}
+
+nav ul li ul.submenu li a {
+  display: block;
+  padding: 5px 15px;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+nav ul li ul.submenu li a:hover {
+  background: #1f6feb;
 }
 
 nav ul li a {
