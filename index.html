@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -10,227 +10,681 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <title>Шпаргалка по JavaScript</title>
 </head>
 
 <body>
+    <div id="progress-bar"></div>
     <header>
         <h1>Шпаргалка по JavaScript</h1>
-        <div class="theme-toggle">
-            <button id="theme-btn">Светлая тема</button>
-        </div>
+        <button id="theme-toggle">Светлая тема</button>
     </header>
 
     <nav>
-        <input type="text" id="search" placeholder="Поиск по шпаргалке..." class="search-bar">
         <ul>
-            <li><a href="#">Модуль 1. Переменные и типы. Основы функций</a>
+            <li><a href="#basics">Основы JavaScript</a>
                 <ul class="submenu">
-                    <li><a href="#data-types">Типы данных</a></li>
-                    <li><a href="#string">Строки</a></li>
-                    <li><a href="#operator-||">Операторы сравнения</a></li>
-                    <li><a href="#function_base">Основы функций</a></li>
+                    <li><a href="#variables">Переменные и типы</a></li>
+                    <li><a href="#operators">Операторы</a></li>
+                    <li><a href="#strings">Строки</a></li>
+                    <li><a href="#conditions">Условные конструкции</a></li>
                 </ul>
             </li>
-            <li><a href="#">Модуль 2. Разветвления и циклы</a>
-                <ul class="submenu">
-                    <li><a href="#ramifications">Разветвления</a></li>
-                    <li><a href="#logics">Логические операторы</a></li>
-                    <li><a href="#methods">Методы строк</a></li>
-                    <li><a href="#loops">Циклы</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Модуль 3. Массивы и функции</a>
-                <ul class="submenu">
-                    <li><a href="#arrays">Массивы</a></li>
-                    <li><a href="#array-methods">Методы массива</a></li>
-                    <li><a href="#array-iteration">Итерация по массиву</a></li>
-                    <li><a href="#functions-part2">Функции (часть 2)</a></li>
-                </ul>
-            </li>
+            <li><a href="#arrays">Массивы</a></li>
+            <li><a href="#functions">Функции</a></li>
+            <li><a href="#loops">Циклы и управление</a></li>
+            <li><a href="#objects">Объекты</a></li>
+            <li><a href="#exercises">Упражнения</a></li>
+            <li><a href="#interactive">Интерактив</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#resources">Ресурсы</a></li>
         </ul>
     </nav>
 
     <main>
-        <section id="data-types">
-            <h2>Типы данных</h2>
-            <ul>
-                <li><b>boolean</b> — <code>true</code> или <code>false</code>. Пример: <code>let isActive = true;</code>
-                </li>
-                <li><b>string</b> — Текст. Пример: <code>"Hello"</code>.</li>
-                <li><b>number</b> — Числа. Пример: <code>42</code>, <code>-3.14</code>.</li>
-                <li><b>null</b> — Ничего. Пример: <code>let value = null;</code></li>
-                <li><b>undefined</b> — Не определено. Пример: <code>let x;</code></li>
-                <li><b>symbol</b> — Уникальный идентификатор. Пример: <code>let id = Symbol("id");</code></li>
-                <li><b>bigint</b> — Большие числа. Пример: <code>123n</code>.</li>
-            </ul>
-            <pre><code>
-let isActive = true;
-console.log(isActive);
-            </code></pre>
-            <button class="run-code" data-code="console.log(true);">Запустить</button>
-        </section>
+        <section id="basics" class="fade-in">
+            <h2>Основы JavaScript</h2>
+            <p>Основы JavaScript включают переменные, типы данных, операторы, строки и условные конструкции.</p>
 
-        <section id="string">
-            <h2>Строки в JavaScript</h2>
-            <p>Строка — это текст в кавычках. Она неизменяема.</p>
-            <h3>Конкатенация</h3>
-            <p><code>"Hello" + " " + "World"</code> → <code>"Hello World"</code>.</p>
-            <h3>Шаблонные строки</h3>
-            <pre><code>
-const name = "Alex";
-console.log(`Привет, ${name}!`);
-            </code></pre>
-            <button class="run-code"
-                data-code="const name = 'Alex'; console.log(`Привет, ${name}!`);">Запустить</button>
-        </section>
+            <section id="variables">
+                <h3>Переменные и типы данных</h3>
+                <p>В JavaScript переменные объявляются с помощью <span class="tooltip"
+                        data-tooltip="Переменная с блочной областью видимости">let</span>, <span class="tooltip"
+                        data-tooltip="Константа, не изменяется">const</span> и устаревшего <code>var</code>.</p>
+                <pre><code class="language-javascript">
+// var - устаревший способ (не рекомендуется)
+var oldVariable = "старая переменная";
 
-        <section id="operator-||">
-            <h2>Операторы сравнения</h2>
-            <ul>
-                <li><code>></code>, <code><</code>, <code>>=</code>, <code><=</code> — больше, меньше, больше/меньше или
-                    равно.</li>
-                <li><code>==</code> — нестрогое равенство. Пример: <code>5 == "5"</code> → <code>true</code>.</li>
-                <li><code>===</code> — строгое равенство. Пример: <code>5 === "5"</code> → <code>false</code>.</li>
-            </ul>
-            <h3>Math</h3>
-            <ul>
-                <li><code>Math.floor(3.7)</code> → <code>3</code>.</li>
-                <li><code>Math.random()</code> → случайное число от 0 до 1.</li>
-            </ul>
-            <pre><code>
-console.log(Math.floor(3.7));
-            </code></pre>
-            <button class="run-code" data-code="console.log(Math.floor(3.7));">Запустить</button>
-        </section>
+// let - для переменных, значение которых может изменяться
+let name = "Иван";
+name = "Петр"; // можно изменить значение
 
-        <section id="function_base">
-            <h2>Основы функций</h2>
-            <p>Функция — это блок кода, который можно вызывать.</p>
-            <pre><code>
-function sayHello(name) {
-    return `Привет, ${name}!`;
-}
-console.log(sayHello("Alex"));
-            </code></pre>
-            <button class="run-code"
-                data-code="function sayHello(name) { return `Привет, ${name}!`; }; console.log(sayHello('Alex'));">Запустить</button>
-        </section>
+// const - для констант, значение которых не должно изменяться
+const PI = 3.14159;
+// PI = 3; // Ошибка! Нельзя изменить константу
+<h3>JavaScript имеет следующие основные типы данных:</h3>
+// Примитивные типы данных
+let string = "Это строка"; // Строка (String)
+let number = 42;           // Число (Number)
+let bigInt = 9007199254740991n; // BigInt
+let boolean = true;        // Логический тип (Boolean)
+let nullValue = null;      // Null (пустое значение)
+let undefinedValue;        // Undefined (неопределенное)
+let symbol = Symbol("id"); // Symbol (уникальный идентификатор)
 
-        <section id="ramifications">
-            <h2>Разветвления</h2>
-            <p>Выполняют код в зависимости от условий.</p>
-            <h3>if...else</h3>
-            <pre><code>
+// Ссылочный тип данных
+let object = {             // Объект (Object)
+    name: "Иван",
+    age: 30
+};
+                </code></pre>
+                <button class="toggle-code">Скрыть код</button>
+                <button class="copy-code">Скопировать</button>
+            </section>
+
+            <section id="operators">
+                <h3>Операторы</h3>
+                <p>JavaScript поддерживает различные типы операторов:</p>
+                <pre><code class="language-javascript">
+// Арифметические операторы
+let sum = 5 + 3;        // 8 (сложение)
+let difference = 5 - 3; // 2 (вычитание)
+let product = 5 * 3;    // 15 (умножение)
+let quotient = 5 / 3;   // 1.6666... (деление)
+let remainder = 5 % 3;  // 2 (остаток от деления)
+let power = 5 ** 3;     // 125 (возведение в степень)
+
+// Операторы присваивания
+let x = 5;
+x += 3; // x = x + 3 (8)
+x -= 2; // x = x - 2 (6)
+x *= 2; // x = x * 2 (12)
+x /= 4; // x = x / 4 (3)
+
+// Операторы сравнения
+let isEqual = 5 == "5"; // true (равно с приведением типов)
+let isStrictEqual = 5 === "5"; // false (строго равно, без приведения типов)
+let isNotEqual = 5 != "6"; // true (не равно)
+let isGreater = 5 > 3; // true (больше)
+let isLess = 5 < 10; // true (меньше) let isGreaterOrEqual=5>= 5; // true (больше или равно)
+let isLessOrEqual = 5 <= 6; // true (меньше или равно)
+
+// Логические операторы
+let and = true && false; // false (логическое И)
+let or = true || false;  // true (логическое ИЛИ)
+let not = !true;         // false (логическое НЕ)
+
+// Инкремент и декремент
+let a = 5;
+let b = a++; // b = 5, a = 6 (постфиксный инкремент)
+let c = 5;
+let d = ++c; // d = 6, c = 6 (префиксный инкремент)
+                </code></pre>
+                <button class="toggle-code">Скрыть код</button>
+                <button class="copy-code">Скопировать</button>
+            </section>
+
+            <section id="strings">
+                <h3>Строки и шаблонные строки</h3>
+                <p>Строки можно создавать с помощью одинарных, двойных кавычек или обратных кавычек:</p>
+                <pre><code class="language-javascript">
+// Создание строк
+let singleQuotes = 'Строка в одинарных кавычках';
+let doubleQuotes = "Строка в двойных кавычках";
+
+// Экранирование символов
+let escapeQuote = "Он сказал: \"Привет!\"";
+let escapePath = "C:\\Program Files\\App"; // Двойной обратный слеш для экранирования
+
+// Шаблонные строки
+let name = "Иван";
+let age = 30;
+let greeting = `Привет, меня зовут ${name} и мне ${age} лет.`;
+console.log(greeting); // "Привет, меня зовут Иван и мне 30 лет."
+
+// Многострочные шаблонные строки
+let multiline = `Это первая строка.
+Это вторая строка.
+А это третья строка.`;
+
+// Методы строк
+JavaScript предоставляет множество встроенных методов для работы со строками:
+
+let text = "Привет, мир!";
+
+// Получение длины строки
+console.log(text.length); // 12
+
+// Получение символа по индексу
+console.log(text[0]); // "П"
+console.log(text.charAt(0)); // "П"
+
+// Поиск подстроки
+console.log(text.indexOf("мир")); // 8
+console.log(text.includes("Привет")); // true
+
+// Извлечение подстроки
+console.log(text.substring(0, 6)); // "Привет"
+console.log(text.slice(8, 11)); // "мир"
+
+// Замена подстроки
+console.log(text.replace("мир", "JavaScript")); // "Привет, JavaScript!"
+
+// Преобразование регистра
+console.log(text.toUpperCase()); // "ПРИВЕТ, МИР!"
+console.log(text.toLowerCase()); // "привет, мир!"
+
+// Удаление пробелов в начале и конце
+let paddedText = " Текст с пробелами ";
+console.log(paddedText.trim()); // "Текст с пробелами"
+
+// Разделение строки на массив
+console.log("яблоко,банан,киви".split(",")); // ["яблоко", "банан", "киви"]
+                </code></pre>
+                <button class="toggle-code">Скрыть код</button>
+                <button class="copy-code">Скопировать</button>
+            </section>
+
+            <section id="conditions">
+                <h3>Условные конструкции</h3>
+                <p>Условные конструкции позволяют выполнять код в зависимости от условий:</p>
+                <pre><code class="language-javascript">
+// if...else
 let age = 18;
+
 if (age >= 18) {
-    console.log("Совершеннолетний");
+console.log("Вы совершеннолетний");
 } else {
-    console.log("Несовершеннолетний");
+console.log("Вы несовершеннолетний");
 }
-            </code></pre>
-            <button class="run-code"
-                data-code="let age = 18; if (age >= 18) { console.log('Совершеннолетний'); } else { console.log('Несовершеннолетний'); }">Запустить</button>
-        </section>
 
-        <section id="logics">
-            <h2>Логические операторы</h2>
-            <ul>
-                <li><b>&&</b> — И (true, если оба верны).</li>
-                <li><b>||</b> — ИЛИ (true, если хотя бы одно верно).</li>
-                <li><b>!</b> — НЕ. Пример: <code>!true</code> → <code>false</code>.</li>
-            </ul>
-            <pre><code>
-console.log(true && false);
-            </code></pre>
-            <button class="run-code" data-code="console.log(true && false);">Запустить</button>
-        </section>
+// if...else if...else
+let score = 85;
 
-        <section id="methods">
-            <h2>Методы строк</h2>
-            <ul>
-                <li><code>includes("text")</code> — проверяет наличие подстроки.</li>
-                <li><code>toLowerCase()</code> — в нижний регистр.</li>
-                <li><code>slice(0, 3)</code> — вырезает часть.</li>
-            </ul>
-            <pre><code>
-console.log("Hello".includes("ll"));
-            </code></pre>
-            <button class="run-code" data-code="console.log('Hello'.includes('ll'));">Запустить</button>
-        </section>
-
-        <section id="loops">
-            <h2>Циклы</h2>
-            <h3>while</h3>
-            <pre><code>
-let i = 0;
-while (i < 3) {
-    console.log(i);
-    i++;
+if (score >= 90) {
+console.log("Отлично");
+} else if (score >= 80) {
+console.log("Хорошо");
+} else if (score >= 70) {
+console.log("Удовлетворительно");
+} else {
+console.log("Неудовлетворительно");
 }
-            </code></pre>
-            <button class="run-code" data-code="let i = 0; while (i < 3) { console.log(i); i++; }">Запустить</button>
-            <h3>for</h3>
-            <pre><code>
-for (let i = 0; i < 3; i++) {
-    console.log(i);
+
+// Тернарный оператор
+let message = age >= 18 ? "Совершеннолетний" : "Несовершеннолетний";
+console.log(message);
+
+// switch
+let day = 2;
+let dayName;
+
+switch (day) {
+case 1:
+dayName = "Понедельник";
+break;
+case 2:
+dayName = "Вторник";
+break;
+case 3:
+dayName = "Среда";
+break;
+case 4:
+dayName = "Четверг";
+break;
+case 5:
+dayName = "Пятница";
+break;
+case 6:
+dayName = "Суббота";
+break;
+case 7:
+dayName = "Воскресенье";
+break;
+default:
+dayName = "Неизвестный день";
 }
-            </code></pre>
-            <button class="run-code" data-code="for (let i = 0; i < 3; i++) { console.log(i); }">Запустить</button>
+
+console.log(dayName); // "Вторник"
+                </code></pre>
+                <button class="toggle-code">Скрыть код</button>
+                <button class="copy-code">Скопировать</button>
+            </section>
         </section>
 
-        <section id="arrays">
+        <section id="arrays" class="fade-in">
             <h2>Массивы</h2>
-            <p>Массив — список элементов.</p>
-            <pre><code>
-const fruits = ["Яблоко", "Банан"];
-console.log(fruits[0]);
+            <p>Массивы — это упорядоченные коллекции элементов.</p>
+
+            <h3>Создание массивов</h3>
+            <pre><code class="language-javascript">
+// Создание массива с помощью литерала массива
+let fruits = ["яблоко", "банан", "апельсин"];
+
+// Создание массива с помощью конструктора Array
+let numbers = new Array(1, 2, 3, 4, 5);
+
+// Создание пустого массива
+let emptyArray = [];
+
+// Создание массива с разными типами данных
+let mixedArray = [1, "два", true, { name: "Иван" }, [5, 6]];
+
+// Создание массива определенной длины
+let arrayWithLength = new Array(5); // Создает массив с 5 пустыми элементами
+Доступ к элементам массива
+let fruits = ["яблоко", "банан", "апельсин", "киви"];
+
+// Доступ по индексу (индексы начинаются с 0)
+console.log(fruits[0]); // "яблоко"
+console.log(fruits[2]); // "апельсин"
+
+// Изменение элемента по индексу
+fruits[1] = "груша";
+console.log(fruits); // ["яблоко", "груша", "апельсин", "киви"]
+
+// Длина массива
+console.log(fruits.length); // 4
+
+// Доступ к последнему элементу
+console.log(fruits[fruits.length - 1]); // "киви"
+Основные методы массивов
+let fruits = ["яблоко", "банан", "апельсин"];
+
+// Добавление элементов
+fruits.push("киви"); // Добавляет в конец массива
+console.log(fruits); // ["яблоко", "банан", "апельсин", "киви"]
+
+fruits.unshift("манго"); // Добавляет в начало массива
+console.log(fruits); // ["манго", "яблоко", "банан", "апельсин", "киви"]
+
+// Удаление элементов
+let lastFruit = fruits.pop(); // Удаляет последний элемент и возвращает его
+console.log(lastFruit); // "киви"
+console.log(fruits); // ["манго", "яблоко", "банан", "апельсин"]
+
+let firstFruit = fruits.shift(); // Удаляет первый элемент и возвращает его
+console.log(firstFruit); // "манго"
+console.log(fruits); // ["яблоко", "банан", "апельсин"]
+
+// Поиск элементов
+console.log(fruits.indexOf("банан")); // 1
+console.log(fruits.includes("киви")); // false
+
+// Объединение массивов
+let moreFruits = ["киви", "груша"];
+let allFruits = fruits.concat(moreFruits);
+console.log(allFruits); // ["яблоко", "банан", "апельсин", "киви", "груша"]
+
+// Создание строки из массива
+console.log(fruits.join(", ")); // "яблоко, банан, апельсин"
+
+// Получение части массива
+let citrusFruits = allFruits.slice(2, 4); // Элементы с индекса 2 до 4 (не включая 4)
+console.log(citrusFruits); // ["апельсин", "киви"]
+
+// Изменение массива (удаление, замена, добавление элементов)
+// splice(startIndex, deleteCount, item1, item2, ...)
+fruits.splice(1, 1, "груша", "виноград"); // Удаляет 1 элемент начиная с индекса 1 и добавляет новые
+console.log(fruits); // ["яблоко", "груша", "виноград", "апельсин"]
             </code></pre>
-            <button class="run-code"
-                data-code="const fruits = ['Яблоко', 'Банан']; console.log(fruits[0]);">Запустить</button>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Методы перебора массивов</h3>
+            <pre><code class="language-javascript">
+let numbers = [1, 2, 3, 4, 5];
+
+// forEach - выполняет функцию для каждого элемента массива
+numbers.forEach(function(number, index) {
+console.log(`Элемент ${index}: ${number}`);
+});
+
+// map - создает новый массив с результатами вызова функции для каждого элемента
+let doubled = numbers.map(function(number) {
+return number * 2;
+});
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// filter - создает новый массив с элементами, прошедшими проверку
+let evenNumbers = numbers.filter(function(number) {
+return number % 2 === 0;
+});
+console.log(evenNumbers); // [2, 4]
+
+// find - возвращает первый элемент, прошедший проверку
+let firstEven = numbers.find(function(number) {
+return number % 2 === 0;
+});
+console.log(firstEven); // 2
+
+// some - проверяет, удовлетворяет ли хотя бы один элемент условию
+let hasEven = numbers.some(function(number) {
+return number % 2 === 0;
+});
+console.log(hasEven); // true
+
+// every - проверяет, удовлетворяют ли все элементы условию
+let allEven = numbers.every(function(number) {
+return number % 2 === 0;
+});
+console.log(allEven); // false
+
+// reduce - сводит массив к одному значению
+let sum = numbers.reduce(function(accumulator, current) {
+return accumulator + current;
+}, 0);
+console.log(sum); // 15 (1 + 2 + 3 + 4 + 5)
+
+// sort - сортирует элементы массива
+let unsortedNumbers = [5, 2, 8, 1, 4];
+unsortedNumbers.sort(function(a, b) {
+return a - b; // Для числового сравнения
+});
+console.log(unsortedNumbers); // [1, 2, 4, 5, 8]
+            </code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Деструктуризация массивов</h3>
+            <pre><code class="language-javascript">
+l// Деструктуризация массива
+let colors = ["красный", "зеленый", "синий"];
+let [red, green, blue] = colors;
+console.log(red); // "красный"
+console.log(green); // "зеленый"
+console.log(blue); // "синий"
+
+// Пропуск элементов
+let [first, , third] = colors;
+console.log(first); // "красный"
+console.log(third); // "синий"
+
+// Значения по умолчанию
+let [a, b, c, d = "желтый"] = colors;
+console.log(d); // "желтый"
+
+// Обмен значениями переменных
+let x = 1;
+let y = 2;
+[x, y] = [y, x];
+console.log(x); // 2
+console.log(y); // 1
+
+// Остаточные параметры
+let [head, ...tail] = [1, 2, 3, 4];
+console.log(head); // 1
+console.log(tail); // [2, 3, 4]
+            </code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
         </section>
 
-        <section id="array-methods">
-            <h2>Методы массива</h2>
-            <ul>
-                <li><code>push()</code> — добавляет в конец.</li>
-                <li><code>pop()</code> — убирает последний.</li>
-            </ul>
-            <pre><code>
-const numbers = [1, 2];
-numbers.push(3);
-console.log(numbers);
+        <section id="functions" class="fade-in">
+            <h2>Функции</h2>
+            <p>Функции — это блоки кода, которые можно вызывать многократно.</p>
+
+            <h3>Объявление функций</h3>
+            <pre><code class="language-javascript">
+// Объявление функции (Function Declaration)
+function greet(name) {
+return `Привет, ${name}!`;
+}
+
+// Вызов функции
+console.log(greet("Иван")); // "Привет, Иван!"
+
+// Функциональное выражение (Function Expression)
+const add = function(a, b) {
+return a + b;
+};
+console.log(add(5, 3)); // 8
+
+// Стрелочная функция (Arrow Function)
+const multiply = (a, b) => a * b;
+console.log(multiply(4, 2)); // 8
+
+// Стрелочная функция с блоком кода
+const divide = (a, b) => {
+if (b === 0) {
+return "Деление на ноль невозможно";
+}
+return a / b;
+};
+console.log(divide(10, 2)); // 5
+console.log(divide(10, 0)); // "Деление на ноль невозможно"
             </code></pre>
-            <button class="run-code"
-                data-code="const numbers = [1, 2]; numbers.push(3); console.log(numbers);">Запустить</button>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Параметры функций</h3>
+            <pre><code class="language-javascript">
+// Параметры по умолчанию
+function greet(name = "Гость") {
+return `Привет, ${name}!`;
+}
+console.log(greet()); // "Привет, Гость!"
+console.log(greet("Иван")); // "Привет, Иван!"
+
+// Остаточные параметры
+function sum(...numbers) {
+return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// Деструктуризация параметров
+function printPersonInfo({ name, age, city = "Неизвестно" }) {
+console.log(`${name}, ${age} лет, город: ${city}`);
+}
+printPersonInfo({ name: "Иван", age: 30 }); // "Иван, 30 лет, город: Неизвестно"
+printPersonInfo({ name: "Мария", age: 25, city: "Москва" }); // "Мария, 25 лет, город: Москва"
+            </code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Область видимости и замыкания</h3>
+            <pre><code class="language-javascript">
+// Глобальная и локальная область видимости
+let globalVar = "Я глобальная переменная";
+
+  function testScope() {
+ let localVar = "Я локальная переменная";
+console.log(globalVar); // Доступ к глобальной переменной
+ console.log(localVar); // Доступ к локальной переменной
+}
+                        
+testScope();
+// console.log(localVar); // Ошибка! localVar не определена в глобальной области 
+// Замыкания
+function createCounter() {
+let count = 0;
+return function() {
+    count++;
+    return count;
+};
+}
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+
+// Другой пример замыкания
+function createGreeting(greeting) {
+    return function(name) {
+        return `${greeting}, ${name}!`;
+    };
+}
+
+const sayHello = createGreeting("Привет");
+const sayGoodbye = createGreeting("До свидания");
+
+console.log(sayHello("Иван")); // "Привет, Иван!"
+console.log(sayGoodbye("Мария")); // "До свидания, Мария!"
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Рекурсия</h3>
+            <pre><code class="language-javascript">
+//Рекурсивная функция для вычисления факториала
+function factorial(n) {
+//Базовый случай
+if (n === 0 || n === 1) {
+return 1;
+}
+//Рекурсивный случай
+return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // 120 (5 * 4 * 3 * 2 * 1)
+
+//Рекурсивная функция для вычисления чисел Фибоначчи
+function fibonacci(n) {
+if (n <= 1) {
+return n;
+}
+return fibonacci(n - 1) + fibonacci(n - 2);
+}
+console.log(fibonacci(7)); // 13 (0, 1, 1, 2, 3, 5, 8, 13)
+            </code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Функции высшего порядка</h3>
+            <pre><code class="language-javascript">
+//Функция высшего порядка - принимает или возвращает другие функции
+function applyOperation(a, b, operation) {
+    return operation(a, b);
+}
+
+//Функции для передачи в качестве аргументов
+const add = (x, y) => x + y;
+const subtract = (x, y) => x - y;
+const multiply = (x, y) => x * y;
+
+console.log(applyOperation(5, 3, add)); // 8
+console.log(applyOperation(5, 3, subtract)); // 2
+console.log(applyOperation(5, 3, multiply)); // 15
+
+//Создание функции с помощью функции высшего порядка
+function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+</code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Обработка ошибок</h3>
+            <pre><code class="language-javascript"></code>
+try {
+    throw new Error("Ошибка!");
+} catch (error) {
+    console.log(error.message);
+}
+            </code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
         </section>
 
-        <section id="array-iteration">
-            <h2>Итерация по массиву</h2>
-            <h3>forEach</h3>
-            <pre><code>
-[1, 2, 3].forEach(item => console.log(item));
+        <section id="objects" class="fade-in">
+            <h2>Объекты</h2>
+            <p>Объекты — это коллекции пар ключ-значение.</p>
+
+            <h3>Создание и методы</h3>
+            <pre><code class="language-javascript">
+const person = {
+    name: "Иван",
+    greet() {
+        return `Привет, ${this.name}!`;
+    }
+};
+console.log(person.greet()); // "Привет, Иван!"
             </code></pre>
-            <button class="run-code" data-code="[1, 2, 3].forEach(item => console.log(item));">Запустить</button>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
+
+            <h3>Деструктуризация</h3>
+            <pre><code class="language-javascript">
+const { name } = person;
+console.log(name); // "Иван"
+            </code></pre>
+            <button class="toggle-code">Скрыть код</button>
+            <button class="copy-code">Скопировать</button>
         </section>
 
-        <section id="functions-part2">
-            <h2>Функции (часть 2)</h2>
-            <h3>Стрелочные функции</h3>
-            <pre><code>
-const add = (a, b) => a + b;
-console.log(add(2, 3));
-            </code></pre>
-            <button class="run-code" data-code="const add = (a, b) => a + b; console.log(add(2, 3));">Запустить</button>
+        <section id="exercises" class="fade-in">
+            <h2>Практические упражнения</h2>
+
+            <h3>Упражнение по основам</h3>
+            <textarea class="code-editor">
+let name = "Ваше имя";
+let age = 25;
+console.log(`Привет, ${name}, тебе ${age} лет`);
+            </textarea>
+            <button class="run-code">Запустить</button>
+            <div class="result"></div>
+
+            <h3>Упражнение по массивам</h3>
+            <textarea class="code-editor">
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evens = numbers.filter(num => num % 2 === 0);
+console.log(evens);
+            </textarea>
+            <button class="run-code">Запустить</button>
+            <div class="result"></div>
         </section>
+
+        <section id="interactive" class="fade-in">
+            <h2>Интерактивные демонстрации</h2>
+            <h3>Методы массивов</h3>
+            <div class="array-container" id="array-demo"></div>
+            <div class="controls">
+                <button onclick="demoPush()">push()</button>
+                <button onclick="demoPop()">pop()</button>
+                <button onclick="demoMap()">map()</button>
+                <button onclick="demoFilter()">filter()</button>
+                <button onclick="demoReduce()">reduce()</button>
+            </div>
+            <div class="result" id="demo-result"></div>
+        </section>
+
+        <section id="projects" class="fade-in">
+            <h2>Проекты для закрепления</h2>
+            <p><strong>Калькулятор</strong>: Создай простой калькулятор с базовыми операциями.</p>
+            <p><strong>Список задач</strong>: Реализуй приложение для управления задачами.</p>
+        </section>
+
+        <section id="resources" class="fade-in">
+            <h2>Ресурсы</h2>
+            <p>Книги: "Eloquent JavaScript", "You Don't Know JS".</p>
+            <p>Онлайн: <a href="https://javascript.info/">JavaScript.info</a>, <a
+                    href="https://www.freecodecamp.org/">freeCodeCamp</a>.</p>
+        </section>
+        <script src="./js/01_basics.js" defer></script>
+        <script src="./js/02_arrays.js" defer></script>
+        <script src="./js/03_functions.js" defer></script>
+        <script src="./js/04_loops_and_control_flow.js" defer></script>
+        <script src="./js/05_objects.js" defer></script>
+        <script src="./js/main.js" defer></script>
     </main>
 
+    <button id="scroll-top">↑ Наверх</button>
     <footer>
         <p>© 2025 Шпаргалка по JavaScript</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>
