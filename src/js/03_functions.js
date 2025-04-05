@@ -1,0 +1,191 @@
+// ===== ФУНКЦИИ В JAVASCRIPT =====
+
+// === Объявление функций ===
+
+// Объявление функции (Function Declaration)
+function sayHello(name) {
+  return `Привет, ${name}!`;
+}
+console.log(sayHello("Иван")); // "Привет, Иван!"
+
+// Функциональное выражение (Function Expression)
+const greet = function(name) {
+  return `Здравствуйте, ${name}!`;
+};
+console.log(greet("Мария")); // "Здравствуйте, Мария!"
+
+// Стрелочная функция (Arrow Function)
+const welcome = (name) => {
+  return `Добро пожаловать, ${name}!`;
+};
+console.log(welcome("Алексей")); // "Добро пожаловать, Алексей!"
+
+// Сокращенная запись стрелочной функции (для одной строки)
+const add = (a, b) => a + b;
+console.log(add(2, 3)); // 5
+
+// Стрелочная функция с одним параметром (скобки можно опустить)
+const square = x => x * x;
+console.log(square(4)); // 16
+
+// === Параметры функций ===
+
+// Параметры по умолчанию
+function createUser(name = "Гость", age = 18, city = "Москва") {
+  return `Имя: ${name}, Возраст: ${age}, Город: ${city}`;
+}
+
+console.log(createUser("Иван", 25, "Санкт-Петербург")); // "Имя: Иван, Возраст: 25, Город: Санкт-Петербург"
+console.log(createUser("Анна")); // "Имя: Анна, Возраст: 18, Город: Москва"
+console.log(createUser()); // "Имя: Гость, Возраст: 18, Город: Москва"
+
+// Объект arguments
+function showArgs() {
+  console.log(arguments); // Псевдомассив аргументов
+  console.log(arguments.length); // Количество аргументов
+  console.log(arguments[0]); // Первый аргумент
+}
+
+showArgs(1, "hello", true); // { '0': 1, '1': 'hello', '2': true, length: 3 }
+
+// Преобразование arguments в массив
+function sumArgs() {
+  // Преобразуем arguments в настоящий массив
+  const args = Array.from(arguments);
+  // Используем метод reduce для суммирования
+  return args.reduce((sum, current) => sum + current, 0);
+}
+
+console.log(sumArgs(1, 2, 3, 4)); // 10
+
+// Rest-параметр (современный способ вместо arguments)
+function sumRest(...numbers) {
+  return numbers.reduce((sum, current) => sum + current, 0);
+}
+
+console.log(sumRest(1, 2, 3, 4)); // 10
+console.log(sumRest(5, 10, 15)); // 30
+
+// Деструктуризация параметров
+function displayPerson({ name, age, city = "Неизвестно" }) {
+  console.log(`${name}, ${age} лет, город: ${city}`);
+}
+
+displayPerson({ name: "Иван", age: 30, city: "Москва" }); // "Иван, 30 лет, город: Москва"
+displayPerson({ name: "Анна", age: 25 }); // "Анна, 25 лет, город: Неизвестно"
+
+// === Область видимости и замыкания ===
+
+// Глобальная и локальная область видимости
+let globalVar = "Я глобальная переменная";
+
+function showScope() {
+  let localVar = "Я локальная переменная";
+  console.log(globalVar); // Доступ к глобальной переменной
+  console.log(localVar); // Доступ к локальной переменной
+}
+
+showScope();
+console.log(globalVar); // Доступ к глобальной переменной
+// console.log(localVar); // Ошибка: localVar is not defined
+
+// Замыкания (closures)
+function createCounter() {
+  let count = 0; // Переменная, захваченная замыканием
+  
+  return function() {
+    return ++count;
+  };
+}
+
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+
+// Пример практического использования замыканий
+function createGreeting(greeting) {
+  return function(name) {
+    return `${greeting}, ${name}!`;
+  };
+}
+
+const sayHi = createGreeting("Привет");
+const sayBye = createGreeting("До свидания");
+
+console.log(sayHi("Иван")); // "Привет, Иван!"
+console.log(sayBye("Мария")); // "До свидания, Мария!"
+
+// === Рекурсия ===
+
+// Факториал числа (n! = n * (n-1) * ... * 1)
+function factorial(n) {
+  if (n <= 1) {
+    return 1; // Базовый случай
+  }
+  return n * factorial(n - 1); // Рекурсивный вызов
+}
+
+console.log(factorial(5)); // 120 (5 * 4 * 3 * 2 * 1)
+
+// Числа Фибоначчи (0, 1, 1, 2, 3, 5, 8, 13, ...)
+function fibonacci(n) {
+  if (n <= 1) {
+    return n; // Базовые случаи: fib(0) = 0, fib(1) = 1
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2); // Рекурсивный вызов
+}
+
+console.log(fibonacci(7)); // 13
+
+// === Функции высшего порядка ===
+
+// Функция, принимающая другую функцию как аргумент
+function applyOperation(a, b, operation) {
+  return operation(a, b);
+}
+
+// Передаем функции как аргументы
+console.log(applyOperation(5, 3, (a, b) => a + b)); // 8 (сложение)
+console.log(applyOperation(5, 3, (a, b) => a - b)); // 2 (вычитание)
+console.log(applyOperation(5, 3, (a, b) => a * b)); // 15 (умножение)
+
+// Функция, возвращающая другую функцию
+function multiply(a) {
+  return function(b) {
+    return a * b;
+  };
+}
+
+const double = multiply(2);
+const triple = multiply(3);
+
+console.log(double(5)); // 10 (2 * 5)
+console.log(triple(5)); // 15 (3 * 5)
+
+// === Методы функций ===
+
+// call - вызывает функцию с указанным this и аргументами
+function introduce(greeting) {
+  console.log(`${greeting}, меня зовут ${this.name}`);
+}
+
+const person1 = { name: "Иван" };
+const person2 = { name: "Мария" };
+
+introduce.call(person1, "Привет"); // "Привет, меня зовут Иван"
+introduce.call(person2, "Здравствуйте"); // "Здравствуйте, меня зовут Мария"
+
+// apply - то же, что и call, но аргументы передаются массивом
+introduce.apply(person1, ["Добрый день"]); // "Добрый день, меня зовут Иван"
+
+// bind - создает новую функцию с привязанным this и начальными аргументами
+const introduceIvan = introduce.bind(person1);
+const introduceMaria = introduce.bind(person2);
+
+introduceIvan("Привет"); // "Привет, меня зовут Иван"
+introduceMaria("Здравствуйте"); // "Здравствуйте, меня зовут Мария"
+
+// bind с предустановленными аргументами
+const sayHelloToIvan = introduce.bind(person1, "Привет");
+sayHelloToIvan(); // "Привет, меня зовут Иван"
