@@ -8,10 +8,10 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <title>Основы - Руководство по JavaScript</title>
 </head>
 
@@ -21,7 +21,7 @@
       <h1>JavaScript: Полное руководство для изучения</h1>
       <nav>
         <ul>
-          <li><a href="./index.html">Главная</a></li>
+          <li><a href="/index.html">Главная</a></li>
           <li><a href="learning_guide.html">Гайд по обучению</a></li>
           <li><a href="basics.html" class="active">Основы</a></li>
           <li><a href="arrays.html">Массивы</a></li>
@@ -256,7 +256,7 @@ console.log(dayName); // "Вторник"</code></pre>
     </section>
 
     <div class="navigation-buttons">
-      <a href="../index.html" class="button">← Назад к главной</a>
+      <a href="../index.html" class="button">← На главную</a>
       <a href="arrays.html" class="button">Массивы →</a>
     </div>
   </main>
@@ -266,12 +266,12 @@ console.log(dayName); // "Вторник"</code></pre>
       <p>© 2025 JavaScript: Полное руководство для изучения</p>
     </div>
   </footer>
-  <script src="../js/01_basics.js" defer></script>
-  <script src="../main.js" defer></script>
+  <script src="/js/01_basics.js" defer></script>
+  <script src="/main.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script>
-    // Дополнительно вызываем подсветку после загрузки DOM
+    // Вызываем подсветку Prism после загрузки DOM
     document.addEventListener('DOMContentLoaded', (event) => {
       Prism.highlightAll();
     });

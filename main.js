@@ -1,4 +1,4 @@
-// ===== Файл: src/main.js =====
+// ===== Файл: main.js =====
 
 // --- Переключение темы ---
 const themeToggle = document.getElementById('theme-toggle');
@@ -10,8 +10,8 @@ const body = document.body;
  */
 function setTheme(isLight) {
     if (!body || !themeToggle) {
-        console.warn("Элементы для переключения темы не найдены.");
-        return;
+        // console.warn("Элементы для переключения темы не найдены.");
+        return; // Тихо выходим, если элементов нет
     }
     if (isLight) {
         body.classList.add('light-theme');
@@ -68,7 +68,7 @@ if (progressBar) {
         progressBar.style.width = `${Math.min(scrollPercent, 100)}%`; // Ограничиваем 100%
     });
 } else {
-    console.warn("Элемент прогресс-бара ('progress-bar') не найден.");
+    // console.warn("Элемент прогресс-бара ('progress-bar') не найден.");
 }
 
 
@@ -86,7 +86,7 @@ if (scrollTopBtn) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 } else {
-    console.warn("Кнопка 'Наверх' ('scroll-top') не найдена.");
+    // console.warn("Кнопка 'Наверх' ('scroll-top') не найдена.");
 }
 
 
@@ -100,11 +100,16 @@ document.querySelectorAll('.toggle-code').forEach(button => {
         if (preElement) {
             const isHidden = preElement.style.display === 'none';
             preElement.style.display = isHidden ? 'block' : 'none';
-            button.textContent = isHidden ? 'Скрыть код' : 'Показать код';
+            button.textContent = isHidden ? 'Показать код' : 'Скрыть код';
         } else {
             console.warn("Не найден элемент <pre> для кнопки 'Скрыть/Показать код'. Проверьте HTML-структуру.");
         }
     });
+    // Инициализация: если pre скрыт, меняем текст кнопки
+    const preElement = button.parentElement.querySelector('pre');
+    if (preElement && preElement.style.display === 'none') {
+        button.textContent = 'Показать код';
+    }
 });
 
 
@@ -235,8 +240,8 @@ if ('IntersectionObserver' in window) {
     sectionsToFade.forEach(section => observer.observe(section));
 } else {
     // Если IntersectionObserver не поддерживается, просто делаем секции видимыми
-    console.warn("IntersectionObserver не поддерживается. Анимация 'fade-in' не будет работать динамически.");
+    // console.warn("IntersectionObserver не поддерживается. Анимация 'fade-in' не будет работать динамически.");
     sectionsToFade.forEach(section => section.classList.add('visible'));
 }
 
-// --- Конец файла src/main.js ---
+// --- Конец файла main.js ---

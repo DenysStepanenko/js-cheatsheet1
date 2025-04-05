@@ -11,161 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>Улучшения для изучения JavaScript</title>
-    <style>
-        /* Дополнительные стили для таблиц и схем */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #30363d;
-            /* Темная граница для темной темы */
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #161b22;
-            /* Темный фон для заголовков */
-            color: #58a6ff;
-        }
-
-        body.light-theme th,
-        body.light-theme td {
-            border: 1px solid #ddd;
-            /* Светлая граница для светлой темы */
-        }
-
-        body.light-theme th {
-            background-color: #e0e0e0;
-            /* Светлый фон для заголовков */
-            color: #1f6feb;
-        }
-
-        pre code.diagram {
-            /* Стиль для схем */
-            background: none;
-            border: none;
-            padding: 0;
-            color: inherit;
-            /* Наследовать цвет текста */
-            font-family: monospace;
-            line-height: 1.4;
-        }
-
-        .code-block pre {
-            /* Убираем лишние отступы у pre внутри code-block */
-            margin: 0;
-            border: none;
-            padding: 0;
-            background: none;
-        }
-
-        /* Стили для интерактивных упражнений (скопированы из примера) */
-        .exercise {
-            background-color: #161b22;
-            /* Фон для темной темы */
-            padding: 15px;
-            border: 1px solid #30363d;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        body.light-theme .exercise {
-            background-color: #f5f5f5;
-            /* Фон для светлой темы */
-            border: 1px solid #ddd;
-        }
-
-        .task {
-            margin-bottom: 10px;
-        }
-
-        .code-editor {
-            /* Стили редактора кода уже есть в style.css, но можно переопределить */
-            width: 100%;
-            height: 150px;
-            box-sizing: border-box;
-            /* Учитываем padding и border в размере */
-        }
-
-        .result {
-            /* Стили результата уже есть в style.css */
-            margin-top: 10px;
-            min-height: 50px;
-            white-space: pre-wrap;
-            /* Для переноса строк в выводе консоли */
-            font-family: monospace;
-        }
-
-        .exercise button {
-            /* Стили кнопок уже есть в style.css */
-            margin-top: 10px;
-        }
-
-        .demo-container {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #30363d;
-            border-radius: 5px;
-            background-color: #161b22;
-        }
-
-        body.light-theme .demo-container {
-            border: 1px solid #ddd;
-            background-color: #f5f5f5;
-        }
-
-        .array-container {
-            /* Стили контейнера массива уже есть в style.css */
-            margin-bottom: 15px;
-        }
-
-        .array-element {
-            /* Стили элемента массива уже есть в style.css */
-            width: 40px;
-            height: 40px;
-            margin: 5px;
-            font-weight: bold;
-        }
-
-        .controls {
-            margin-bottom: 15px;
-        }
-
-        .demo-container button {
-            /* Стили кнопок уже есть в style.css */
-            margin-right: 5px;
-            margin-bottom: 5px;
-            /* Добавим отступ снизу */
-            font-size: 14px;
-            padding: 8px 12px;
-        }
-
-        .code {
-            /* Стиль для отображения примера кода */
-            background-color: #0d1117;
-            /* Темный фон для темной темы */
-            padding: 10px;
-            border: 1px solid #30363d;
-            border-radius: 5px;
-            font-family: monospace;
-            margin-bottom: 10px;
-            white-space: pre-wrap;
-        }
-
-        body.light-theme .code {
-            background-color: #f8f8f8;
-            /* Светлый фон для светлой темы */
-            border: 1px solid #ddd;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Гайд по обучению - Руководство по JavaScript</title>
 </head>
 
 <body>
@@ -174,7 +21,7 @@
             <h1>JavaScript: Полное руководство для изучения</h1>
             <nav>
                 <ul>
-                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="/index.html">Главная</a></li>
                     <li><a href="learning_guide.html" class="active">Гайд по обучению</a></li>
                     <li><a href="basics.html">Основы</a></li>
                     <li><a href="arrays.html">Массивы</a></li>
@@ -299,6 +146,10 @@ console.log("Результаты операций:");
 //    - Условное выражение
 
 // Ваш код здесь...</code></pre>
+                <div class="controls">
+                    <button class="copy-code">Скопировать</button>
+                    <button class="toggle-code">Скрыть код</button>
+                </div>
             </div>
         </section>
 
@@ -336,6 +187,10 @@ const students = [
 // 5. Вычислите среднюю оценку всех студентов
 
 // Ваш код здесь...</code></pre>
+                <div class="controls">
+                    <button class="copy-code">Скопировать</button>
+                    <button class="toggle-code">Скрыть код</button>
+                </div>
             </div>
         </section>
 
@@ -367,6 +222,10 @@ function add(a, b) {
 // 3. Создайте два разных счетчика и проверьте их независимость
 
 // Ваш код здесь...</code></pre>
+                <div class="controls">
+                    <button class="copy-code">Скопировать</button>
+                    <button class="toggle-code">Скрыть код</button>
+                </div>
             </div>
         </section>
 
@@ -398,6 +257,10 @@ function add(a, b) {
 // 3. Используйте try...catch для обработки этой ошибки
 
 // Ваш код здесь...</code></pre>
+                <div class="controls">
+                    <button class="copy-code">Скопировать</button>
+                    <button class="toggle-code">Скрыть код</button>
+                </div>
             </div>
         </section>
 
@@ -423,6 +286,10 @@ function add(a, b) {
 // 4. Продемонстрируйте наследование методов
 
 // Ваш код здесь...</code></pre>
+                <div class="controls">
+                    <button class="copy-code">Скопировать</button>
+                    <button class="toggle-code">Скрыть код</button>
+                </div>
             </div>
         </section>
 
@@ -434,7 +301,7 @@ function add(a, b) {
             <ol>
                 <li>
                     <p><strong>Типы данных в JavaScript</strong></p>
-                    <div class="code-block">
+                    <div class="diagram-wrapper">
                         <pre><code class="diagram">
 JavaScript Типы Данных
 │
@@ -459,7 +326,7 @@ JavaScript Типы Данных
                 </li>
                 <li>
                     <p><strong>Область видимости переменных</strong></p>
-                    <div class="code-block">
+                    <div class="diagram-wrapper">
                         <pre><code class="diagram">
 Область видимости переменных
 │
@@ -482,7 +349,7 @@ JavaScript Типы Данных
                 </li>
                 <li>
                     <p><strong>Жизненный цикл переменных</strong></p>
-                    <div class="code-block">
+                    <div class="diagram-wrapper">
                         <pre><code class="diagram">
 Жизненный цикл переменных
 │
@@ -692,6 +559,54 @@ JavaScript Типы Данных
                                 <td>Отсортированный массив</td>
                                 <td>Да</td>
                             </tr>
+                            <tr>
+                                <td>reverse()</td>
+                                <td>Обращает порядок элементов</td>
+                                <td>Измененный массив</td>
+                                <td>Да</td>
+                            </tr>
+                            <tr>
+                                <td>join()</td>
+                                <td>Объединяет элементы в строку</td>
+                                <td>Строка</td>
+                                <td>Нет</td>
+                            </tr>
+                            <tr>
+                                <td>indexOf()</td>
+                                <td>Находит первый индекс элемента</td>
+                                <td>Индекс или -1</td>
+                                <td>Нет</td>
+                            </tr>
+                            <tr>
+                                <td>includes()</td>
+                                <td>Проверяет наличие элемента</td>
+                                <td>true/false</td>
+                                <td>Нет</td>
+                            </tr>
+                            <tr>
+                                <td>find()</td>
+                                <td>Находит первый элемент по условию</td>
+                                <td>Элемент или undefined</td>
+                                <td>Нет</td>
+                            </tr>
+                            <tr>
+                                <td>findIndex()</td>
+                                <td>Находит индекс первого элемента по условию</td>
+                                <td>Индекс или -1</td>
+                                <td>Нет</td>
+                            </tr>
+                            <tr>
+                                <td>some()</td>
+                                <td>Проверяет, есть ли хоть один элемент по условию</td>
+                                <td>true/false</td>
+                                <td>Нет</td>
+                            </tr>
+                            <tr>
+                                <td>every()</td>
+                                <td>Проверяет, все ли элементы удовлетворяют условию</td>
+                                <td>true/false</td>
+                                <td>Нет</td>
+                            </tr>
                         </tbody>
                     </table>
                 </li>
@@ -703,8 +618,8 @@ JavaScript Типы Данных
 
         <section id="интерактивные-упражнения" class="fade-in">
             <h3>Интерактивные упражнения</h3>
-            <p>Создайте файлы с интерактивными упражнениями, которые можно выполнять в браузере:</p>
-            <div class="exercise">
+            <p>Вы можете выполнять упражнения прямо здесь:</p>
+            <div class="exercise code-block">
                 <h4>Пример: Интерактивное упражнение по массивам</h4>
                 <div class="task">
                     <p>Задание: Используйте методы массивов для решения следующих задач:</p>
@@ -731,11 +646,13 @@ const sum = numbers.reduce((acc, num) => acc + num, 0);
 console.log("Четные числа:", evenNumbers);
 console.log("Числа, умноженные на 2:", doubledNumbers);
 console.log("Сумма всех чисел:", sum);</textarea>
-                <button onclick="runExercise('exercise1-code', 'exercise1-result')">Запустить код</button>
+                <div class="controls">
+                    <button class="run-code">Запустить</button>
+                </div>
                 <div class="result" id="exercise1-result"></div>
             </div>
 
-            <div class="exercise">
+            <div class="exercise code-block">
                 <h4>Пример: Работа с объектами в массиве</h4>
                 <div class="task">
                     <p>Задание: Используйте методы массивов для работы с массивом объектов:</p>
@@ -766,16 +683,18 @@ const names = students.map(student => student.name);
 
 // Выводим результаты
 console.log("Отсортированные студенты:", sortedStudents);
-console.log("Средний балл:", averageGrade);
+console.log("Средний балл:", averageGrade.toFixed(2)); // Округляем средний балл
 console.log("Имена студентов:", names);</textarea>
-                <button onclick="runExercise('exercise2-code', 'exercise2-result')">Запустить код</button>
+                <div class="controls">
+                    <button class="run-code">Запустить</button>
+                </div>
                 <div class="result" id="exercise2-result"></div>
             </div>
         </section>
 
         <section id="интерактивные-демонстрации" class="fade-in">
             <h3>Интерактивные демонстрации</h3>
-            <p>Создайте интерактивные демонстрации для визуализации концепций JavaScript:</p>
+            <p>Визуализируйте работу методов массивов:</p>
             <div class="demo-container">
                 <h4>Демонстрация методов массивов</h4>
                 <h5>Исходный массив</h5>
@@ -945,7 +864,7 @@ console.log("Имена студентов:", names);</textarea>
             </ul>
         </section>
         <div class="navigation-buttons">
-            <a href="../index.html" class="button">← На главную</a>
+            <a href="index.html" class="button">← На главную</a>
             <a href="basics.html" class="button">Основы →</a>
         </div>
     </main>
@@ -957,87 +876,88 @@ console.log("Имена студентов:", names);</textarea>
     </footer>
     <script>
         // --- Скрипт для интерактивных упражнений ---
-        function runExercise(codeId, resultId) {
-            const code = document.getElementById(codeId).value;
-            const resultElement = document.getElementById(resultId);
-            resultElement.innerHTML = ""; // Очищаем предыдущий результат
+        document.querySelectorAll('.run-code').forEach(button => {
+            const block = button.closest('.code-block'); // Находим родительский блок
+            if (!block) return;
+            const textarea = block.querySelector('.code-editor');
+            const resultDiv = block.querySelector('.result');
 
-            // Перехватываем console.log
-            const originalConsoleLog = console.log;
-            const logs = [];
-            const capturedErrors = [];
+            if (textarea && resultDiv) {
+                button.addEventListener('click', () => {
+                    resultDiv.innerHTML = ''; // Очищаем предыдущий результат
 
-            console.log = function (...args) {
-                // Преобразуем аргументы в строку, обрабатывая объекты и массивы
-                const formattedArgs = args.map(arg => {
-                    if (typeof arg === 'object' && arg !== null) {
-                        try {
-                            // Используем JSON.stringify для красивого вывода объектов/массивов
-                            return JSON.stringify(arg, null, 2);
-                        } catch (e) {
-                            return '[Circular Object]'; // Обработка циклических ссылок
+                    const originalConsoleLog = console.log;
+                    const logs = [];
+                    const capturedErrors = []; // Для перехвата ошибок
+
+                    console.log = function (...args) {
+                        const formattedArgs = args.map(arg => {
+                            if (typeof arg === 'object' && arg !== null) {
+                                try {
+                                    return JSON.stringify(arg, null, 2);
+                                } catch (e) { return '[Circular Object]'; }
+                            }
+                            return String(arg);
+                        });
+                        logs.push(formattedArgs.join(" "));
+                        originalConsoleLog.apply(console, args);
+                    };
+
+                    // Временный обработчик ошибок окна
+                    const oldOnError = window.onerror;
+                    window.onerror = function (message, source, lineno, colno, error) {
+                        capturedErrors.push(`Ошибка: ${message} (строка ${lineno})`);
+                        return true; // Подавляем стандартный вывод
+                    };
+
+                    try {
+                        const runCode = new Function(textarea.value);
+                        runCode();
+
+                        if (logs.length > 0) {
+                            logs.forEach(log => {
+                                const logElement = document.createElement("pre"); // Используем pre
+                                logElement.style.margin = '0 0 5px 0';
+                                logElement.textContent = log;
+                                resultDiv.appendChild(logElement);
+                            });
+                        } else if (capturedErrors.length === 0) { // Показываем "нет вывода" только если не было ошибок
+                            const noOutputElement = document.createElement("p");
+                            noOutputElement.textContent = "Код выполнен без вывода в console.log.";
+                            noOutputElement.style.fontStyle = "italic";
+                            resultDiv.appendChild(noOutputElement);
                         }
+
+                        // Выводим перехваченные ошибки
+                        capturedErrors.forEach(errMsg => {
+                            const errorElement = document.createElement("p");
+                            errorElement.style.color = "red";
+                            errorElement.textContent = errMsg;
+                            resultDiv.appendChild(errorElement);
+                        });
+
+                    } catch (error) {
+                        const errorElement = document.createElement("p");
+                        errorElement.style.color = "red";
+                        errorElement.textContent = "Ошибка выполнения: " + error.message;
+                        resultDiv.appendChild(errorElement);
+                    } finally {
+                        console.log = originalConsoleLog; // Восстанавливаем
+                        window.onerror = oldOnError; // Восстанавливаем обработчик ошибок
                     }
-                    return String(arg); // Преобразуем другие типы в строку
                 });
-                logs.push(formattedArgs.join(" "));
-                originalConsoleLog.apply(console, args); // Выводим и в настоящую консоль
-            };
-
-            // Перехватываем ошибки
-            window.onerror = function (message, source, lineno, colno, error) {
-                capturedErrors.push(`Ошибка: ${message} (строка ${lineno})`);
-                return true; // Подавляем стандартный вывод ошибки в консоль
-            };
-
-
-            try {
-                // Используем Function конструктор для изоляции кода
-                const runCode = new Function(code);
-                runCode();
-
-                // Выводим логи
-                if (logs.length > 0) {
-                    logs.forEach(log => {
-                        const logElement = document.createElement("p");
-                        logElement.textContent = log;
-                        resultElement.appendChild(logElement);
-                    });
-                } else if (capturedErrors.length === 0) {
-                    const noOutputElement = document.createElement("p");
-                    noOutputElement.textContent = "Код выполнен без вывода в console.log.";
-                    noOutputElement.style.fontStyle = "italic";
-                    resultElement.appendChild(noOutputElement);
-                }
-
-                // Выводим перехваченные ошибки
-                capturedErrors.forEach(errMsg => {
-                    const errorElement = document.createElement("p");
-                    errorElement.style.color = "red";
-                    errorElement.textContent = errMsg;
-                    resultElement.appendChild(errorElement);
-                });
-
-            } catch (error) {
-                // Выводим ошибки выполнения eval/Function
-                const errorElement = document.createElement("p");
-                errorElement.style.color = "red";
-                errorElement.textContent = "Ошибка выполнения: " + error.message;
-                resultElement.appendChild(errorElement);
-            } finally {
-                // Восстанавливаем console.log и обработчик ошибок
-                console.log = originalConsoleLog;
-                window.onerror = null;
             }
-        }
+        });
 
         // --- Скрипт для интерактивной демонстрации массивов ---
         let currentArray = [1, 2, 3, 4, 5];
+        const originalArrayContainer = document.getElementById("original-array");
 
         function renderArray(containerId, array) {
             const container = document.getElementById(containerId);
-            if (!container) return; // Добавим проверку
+            if (!container) return;
             container.innerHTML = "";
+            if (!Array.isArray(array)) return; // Добавим проверку, что это массив
 
             array.forEach(item => {
                 const element = document.createElement("div");
@@ -1074,10 +994,15 @@ console.log("Имена студентов:", names);</textarea>
                 const el = document.getElementById(id);
                 if (el) el.innerHTML = "";
             });
+            // Сбрасываем текст у текстовых полей
+            const mapText = document.getElementById("map-result-text");
+            const filterText = document.getElementById("filter-result-text");
+            if (mapText) mapText.innerHTML = "";
+            if (filterText) filterText.innerHTML = "";
         }
 
         function demonstratePush() {
-            clearDemoResults(); // Очищаем перед показом нового результата
+            clearDemoResults();
             const arrayCopy = [...currentArray];
             const result = arrayCopy.push(99);
             renderArray("original-array", arrayCopy); // Обновляем отображение исходного массива
@@ -1085,7 +1010,7 @@ console.log("Имена студентов:", names);</textarea>
             if (resultEl) {
                 resultEl.innerHTML = `
                 <p>Результат вызова <code>push(99)</code>: ${result} (новая длина массива)</p>
-                <p>Исходный массив изменен.</p>
+                <p>Исходный массив <strong>изменен</strong>.</p>
                `;
             }
             currentArray = arrayCopy; // Сохраняем измененный массив
@@ -1106,7 +1031,7 @@ console.log("Имена студентов:", names);</textarea>
             renderArray("original-array", arrayCopy);
             resultEl.innerHTML = `
               <p>Результат вызова <code>pop()</code>: ${result} (удаленный элемент)</p>
-              <p>Исходный массив изменен.</p>
+              <p>Исходный массив <strong>изменен</strong>.</p>
           `;
             currentArray = arrayCopy;
         }
@@ -1119,7 +1044,7 @@ console.log("Имена студентов:", names);</textarea>
             if (resultTextEl) {
                 resultTextEl.innerHTML = `
                 <p>Результат вызова <code>map(x => x * 2)</code></p>
-                <p>Исходный массив не изменен.</p>
+                <p>Исходный массив <strong>не изменен</strong>.</p>
               `;
             }
         }
@@ -1132,7 +1057,7 @@ console.log("Имена студентов:", names);</textarea>
             if (resultTextEl) {
                 resultTextEl.innerHTML = `
                     <p>Результат вызова <code>filter(x => x % 2 === 0)</code></p>
-                    <p>Исходный массив не изменен.</p>
+                    <p>Исходный массив <strong>не изменен</strong>.</p>
                 `;
             }
         }
@@ -1144,25 +1069,20 @@ console.log("Имена студентов:", names);</textarea>
             if (resultEl) {
                 resultEl.innerHTML = `
                     <p>Результат вызова <code>reduce((sum, x) => sum + x, 0)</code>: ${result}</p>
-                    <p>Исходный массив не изменен.</p>
+                    <p>Исходный массив <strong>не изменен</strong>.</p>
                 `;
             }
         }
 
         // Инициализация демонстрации массивов при загрузке
-        window.addEventListener('load', () => {
+        if (originalArrayContainer) { // Проверяем наличие контейнера
             renderArray("original-array", currentArray);
-        });
+        }
 
     </script>
+    <script src="/main.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script>
-        // Дополнительно вызываем подсветку после загрузки DOM
-        document.addEventListener('DOMContentLoaded', (event) => {
-            Prism.highlightAll();
-        });
-    </script>
 </body>
 
 </html>

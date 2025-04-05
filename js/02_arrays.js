@@ -1,200 +1,232 @@
 // ===== МАССИВЫ В JAVASCRIPT =====
+console.log("===== МАССИВЫ =====");
 
 // === Создание массивов ===
+console.log("\n--- Создание массивов ---");
 
 // Литерал массива
 const fruits = ["яблоко", "банан", "апельсин"];
+console.log("Литерал:", fruits);
 
 // Конструктор Array
 const numbers = new Array(1, 2, 3, 4, 5);
+console.log("Конструктор:", numbers);
 
 // Создание пустого массива
 const emptyArray1 = [];
 const emptyArray2 = new Array();
+console.log("Пустые массивы:", emptyArray1, emptyArray2);
 
-// Создание массива с предопределенной длиной
+// Создание массива с предопределенной длиной (создает "дыры")
 const arrayWithLength = new Array(5); // [empty × 5]
+console.log("Массив с длиной:", arrayWithLength);
 
-// Создание массива из строки
+// Создание массива из строки или другого итерируемого объекта
 const letters = Array.from("hello"); // ["h", "e", "l", "l", "o"]
+console.log("Массив из строки:", letters);
 
-// Создание массива с помощью Array.of()
+// Создание массива с помощью Array.of() (надежнее конструктора для одного числового аргумента)
 const digits = Array.of(1, 2, 3); // [1, 2, 3]
+const singleDigit = Array.of(7); // [7] (в отличие от new Array(7))
+console.log("Array.of(1, 2, 3):", digits);
+console.log("Array.of(7):", singleDigit);
 
 // === Доступ к элементам массива ===
+console.log("\n--- Доступ к элементам ---");
 
 // Доступ по индексу (индексы начинаются с 0)
-console.log(fruits[0]); // "яблоко"
-console.log(fruits[1]); // "банан"
-console.log(fruits[2]); // "апельсин"
+console.log("Первый фрукт:", fruits[0]); // "яблоко"
+console.log("Второй фрукт:", fruits[1]); // "банан"
+console.log("Третий фрукт:", fruits[2]); // "апельсин"
 
 // Доступ к несуществующему элементу
-console.log(fruits[3]); // undefined
+console.log("Четвертый фрукт:", fruits[3]); // undefined
 
 // Изменение элемента по индексу
 fruits[1] = "груша";
-console.log(fruits); // ["яблоко", "груша", "апельсин"]
+console.log("Измененный массив:", fruits); // ["яблоко", "груша", "апельсин"]
 
 // Длина массива
-console.log(fruits.length); // 3
+console.log("Длина массива fruits:", fruits.length); // 3
 
 // Доступ к последнему элементу
-console.log(fruits[fruits.length - 1]); // "апельсин"
+console.log("Последний фрукт:", fruits[fruits.length - 1]); // "апельсин"
 
 // === Основные методы массивов ===
+console.log("\n--- Основные методы ---");
+let planets = ["Земля", "Марс"];
+console.log("Исходные планеты:", planets);
 
 // Добавление элементов
-const planets = ["Земля", "Марс"];
-planets.push("Венера");       // Добавляет в конец, возвращает новую длину
-console.log(planets);         // ["Земля", "Марс", "Венера"]
+let pushResult = planets.push("Венера", "Юпитер"); // Добавляет в конец, возвращает новую длину
+console.log("После push:", planets, "(новая длина:", pushResult, ")");
 
-planets.unshift("Меркурий");  // Добавляет в начало, возвращает новую длину
-console.log(planets);         // ["Меркурий", "Земля", "Марс", "Венера"]
+let unshiftResult = planets.unshift("Меркурий");  // Добавляет в начало, возвращает новую длину
+console.log("После unshift:", planets, "(новая длина:", unshiftResult, ")");
 
 // Удаление элементов
-const lastPlanet = planets.pop();  // Удаляет с конца, возвращает удаленный элемент
-console.log(lastPlanet);           // "Венера"
-console.log(planets);              // ["Меркурий", "Земля", "Марс"]
+let poppedPlanet = planets.pop();  // Удаляет с конца, возвращает удаленный элемент
+console.log("Удален pop:", poppedPlanet, "Осталось:", planets);
 
-const firstPlanet = planets.shift(); // Удаляет с начала, возвращает удаленный элемент
-console.log(firstPlanet);           // "Меркурий"
-console.log(planets);               // ["Земля", "Марс"]
+let shiftedPlanet = planets.shift(); // Удаляет с начала, возвращает удаленный элемент
+console.log("Удален shift:", shiftedPlanet, "Осталось:", planets);
 
 // Поиск элементов
 const colors = ["красный", "зеленый", "синий", "зеленый"];
-
+console.log("Массив цветов:", colors);
 // indexOf - возвращает индекс первого найденного элемента или -1
-console.log(colors.indexOf("зеленый"));     // 1
-console.log(colors.indexOf("желтый"));      // -1
-console.log(colors.indexOf("зеленый", 2));  // 3 (начинает поиск с индекса 2)
+console.log('indexOf("зеленый"):', colors.indexOf("зеленый"));     // 1
+console.log('indexOf("желтый"):', colors.indexOf("желтый"));      // -1
+console.log('indexOf("зеленый", 2):', colors.indexOf("зеленый", 2));  // 3 (начинает поиск с индекса 2)
 
 // lastIndexOf - возвращает индекс последнего найденного элемента или -1
-console.log(colors.lastIndexOf("зеленый")); // 3
+console.log('lastIndexOf("зеленый"):', colors.lastIndexOf("зеленый")); // 3
 
 // includes - проверяет наличие элемента, возвращает true или false
-console.log(colors.includes("синий"));      // true
-console.log(colors.includes("желтый"));     // false
+console.log('includes("синий"):', colors.includes("синий"));      // true
+console.log('includes("желтый"):', colors.includes("желтый"));     // false
 
 // find - возвращает первый элемент, удовлетворяющий условию, или undefined
 const numbers2 = [5, 12, 8, 130, 44];
+console.log("Массив чисел:", numbers2);
 const found = numbers2.find(element => element > 10);
-console.log(found); // 12
+console.log("find(> 10):", found); // 12
 
 // findIndex - возвращает индекс первого элемента, удовлетворяющего условию, или -1
 const foundIndex = numbers2.findIndex(element => element > 10);
-console.log(foundIndex); // 1
+console.log("findIndex(> 10):", foundIndex); // 1
 
 // Объединение и разделение массивов
 const arr1 = [1, 2];
 const arr2 = [3, 4];
+// concat - объединяет массивы (не изменяет исходные)
+const combined = arr1.concat(arr2, [5, 6]);
+console.log("concat:", combined); // [1, 2, 3, 4, 5, 6]
+console.log("arr1 после concat:", arr1); // [1, 2] (не изменился)
 
-// concat - объединяет массивы
-const combined = arr1.concat(arr2);
-console.log(combined); // [1, 2, 3, 4]
-
-// slice - возвращает часть массива
+// slice - возвращает часть массива (не изменяет исходный)
 const numbers3 = [1, 2, 3, 4, 5];
-console.log(numbers3.slice(2));     // [3, 4, 5] (с индекса 2 до конца)
-console.log(numbers3.slice(1, 4));  // [2, 3, 4] (с индекса 1 до 4, не включая 4)
-console.log(numbers3.slice(-2));    // [4, 5] (последние 2 элемента)
+console.log("Массив numbers3:", numbers3);
+console.log("slice(2):", numbers3.slice(2));     // [3, 4, 5] (с индекса 2 до конца)
+console.log("slice(1, 4):", numbers3.slice(1, 4));  // [2, 3, 4] (с индекса 1 до 4, не включая 4)
+console.log("slice(-2):", numbers3.slice(-2));    // [4, 5] (последние 2 элемента)
+console.log("slice():", numbers3.slice());      // [1, 2, 3, 4, 5] (полная копия)
+console.log("numbers3 после slice:", numbers3); // [1, 2, 3, 4, 5] (не изменился)
 
 // splice - изменяет содержимое массива, удаляя/заменяя/добавляя элементы
 const months = ["Янв", "Март", "Апр", "Июнь"];
-months.splice(1, 0, "Фев");         // Вставляет "Фев" на позицию 1
-console.log(months);                // ["Янв", "Фев", "Март", "Апр", "Июнь"]
-
-months.splice(4, 1, "Май");         // Заменяет 1 элемент на позиции 4 на "Май"
-console.log(months);                // ["Янв", "Фев", "Март", "Апр", "Май"]
+console.log("Исходные месяцы:", months);
+// Вставка: splice(индекс_начала, 0_удалить, элемент1, ...)
+months.splice(1, 0, "Фев");
+console.log("После вставки splice(1, 0, 'Фев'):", months); // ["Янв", "Фев", "Март", "Апр", "Июнь"]
+// Замена: splice(индекс_начала, сколько_удалить, элемент1, ...)
+months.splice(4, 1, "Май");
+console.log("После замены splice(4, 1, 'Май'):", months); // ["Янв", "Фев", "Март", "Апр", "Май"]
+// Удаление: splice(индекс_начала, сколько_удалить)
+let removed = months.splice(1, 2); // Удаляем "Фев" и "Март"
+console.log("После удаления splice(1, 2):", months, "Удалено:", removed); // ["Янв", "Апр", "Май"]
 
 // join - объединяет элементы массива в строку
-console.log(months.join());         // "Янв,Фев,Март,Апр,Май"
-console.log(months.join(" - "));    // "Янв - Фев - Март - Апр - Май"
+console.log('Месяцы join(", "):', months.join(", ")); // "Янв, Апр, Май"
+console.log('Месяцы join(" - "):', months.join(" - ")); // "Янв - Апр - Май"
+
+// reverse - обращает порядок элементов в массиве (изменяет исходный)
+console.log("Месяцы до reverse:", months);
+months.reverse();
+console.log("Месяцы после reverse:", months); // ["Май", "Апр", "Янв"]
 
 // === Перебор элементов массива ===
-
+console.log("\n--- Перебор элементов ---");
 const items = ["item1", "item2", "item3"];
+console.log("Массив items:", items);
 
 // for
+console.log("Цикл for:");
 for (let i = 0; i < items.length; i++) {
-  console.log(items[i]);
+  console.log(`  ${i}: ${items[i]}`);
 }
 
 // for...of
+console.log("Цикл for...of:");
 for (const item of items) {
-  console.log(item);
+  console.log(`  ${item}`);
 }
 
 // forEach
-items.forEach(item => {
-  console.log(item);
+console.log("Метод forEach:");
+items.forEach((item, index, array) => {
+  console.log(`  ${index}: ${item} (массив: ${array})`);
 });
 
-// forEach с индексом
-items.forEach((item, index) => {
-  console.log(`${index}: ${item}`);
-});
-
-// === Преобразование массивов ===
-
+// === Преобразование массивов (map, filter, reduce) ===
+console.log("\n--- Преобразование массивов ---");
 const numbers4 = [1, 2, 3, 4, 5];
+console.log("Массив numbers4:", numbers4);
 
 // map - создает новый массив с результатами вызова функции для каждого элемента
 const doubled = numbers4.map(num => num * 2);
-console.log(doubled); // [2, 4, 6, 8, 10]
+console.log("map (x * 2):", doubled); // [2, 4, 6, 8, 10]
 
 // filter - создает новый массив с элементами, прошедшими проверку
-const evenNumbers = numbers4.filter(num => num % 2 === 0);
-console.log(evenNumbers); // [2, 4]
+const oddNumbers = numbers4.filter(num => num % 2 !== 0);
+console.log("filter (нечетные):", oddNumbers); // [1, 3, 5]
 
 // reduce - сводит массив к одному значению
-const sum = numbers4.reduce((total, num) => total + num, 0);
-console.log(sum); // 15
+// Сумма элементов
+const sumReduce = numbers4.reduce((total, num) => total + num, 0); // 0 - начальное значение total
+console.log("reduce (сумма):", sumReduce); // 15
+// Произведение элементов
+const productReduce = numbers4.reduce((product, num) => product * num, 1); // 1 - начальное значение product
+console.log("reduce (произведение):", productReduce); // 120
 
-// sort - сортирует элементы массива (изменяет исходный массив)
+// === Сортировка массивов ===
+console.log("\n--- Сортировка ---");
+// sort - сортирует элементы массива (изменяет исходный массив!)
 const fruits2 = ["банан", "яблоко", "груша", "апельсин"];
-fruits2.sort();
-console.log(fruits2); // ["апельсин", "банан", "груша", "яблоко"]
+console.log("Фрукты до sort:", fruits2);
+fruits2.sort(); // Сортирует как строки (лексикографически)
+console.log("Фрукты после sort:", fruits2); // ["апельсин", "банан", "груша", "яблоко"]
 
 // Сортировка чисел (по умолчанию сортирует как строки)
-const nums = [40, 1, 5, 200];
-nums.sort();
-console.log(nums); // [1, 200, 40, 5] (лексикографическая сортировка)
+const nums = [40, 1, 5, 200, 15];
+console.log("Числа до sort:", nums);
+nums.sort(); // Неправильная сортировка чисел!
+console.log("Числа после sort (неправильно):", nums); // [1, 15, 200, 40, 5]
 
-// Правильная сортировка чисел
+// Правильная сортировка чисел с функцией сравнения
+// Для сортировки по возрастанию: a - b
 nums.sort((a, b) => a - b);
-console.log(nums); // [1, 5, 40, 200] (числовая сортировка по возрастанию)
-
+console.log("Числа после sort (a - b):", nums); // [1, 5, 15, 40, 200]
+// Для сортировки по убыванию: b - a
 nums.sort((a, b) => b - a);
-console.log(nums); // [200, 40, 5, 1] (числовая сортировка по убыванию)
-
-// reverse - обращает порядок элементов в массиве
-const letters2 = ["a", "b", "c"];
-letters2.reverse();
-console.log(letters2); // ["c", "b", "a"]
+console.log("Числа после sort (b - a):", nums); // [200, 40, 15, 5, 1]
 
 // === Многомерные массивы ===
-
+console.log("\n--- Многомерные массивы ---");
 // Двумерный массив (матрица)
 const matrix = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9]
 ];
+console.log("Матрица:", matrix);
 
 // Доступ к элементам
-console.log(matrix[1][2]); // 6 (элемент во второй строке, третьем столбце)
+console.log("Элемент matrix[1][2]:", matrix[1][2]); // 6 (вторая строка, третий столбец)
 
 // Перебор элементов двумерного массива
+console.log("Перебор матрицы:");
 for (let i = 0; i < matrix.length; i++) {
   for (let j = 0; j < matrix[i].length; j++) {
-    console.log(matrix[i][j]);
+    console.log(`  matrix[${i}][${j}] = ${matrix[i][j]}`);
   }
 }
 
 // === Проверка массива ===
-
-// Проверка, является ли переменная массивом
-console.log(Array.isArray([]));        // true
-console.log(Array.isArray([1, 2, 3])); // true
-console.log(Array.isArray({}));        // false
-console.log(Array.isArray("array"));   // false
+console.log("\n--- Проверка массива ---");
+// Array.isArray() - надежный способ проверить, является ли переменная массивом
+console.log("Array.isArray([]):", Array.isArray([]));        // true
+console.log("Array.isArray([1, 2, 3]):", Array.isArray([1, 2, 3])); // true
+console.log("Array.isArray({}):", Array.isArray({}));        // false
+console.log("Array.isArray('array'):", Array.isArray("array"));   // false
+console.log("Array.isArray(null):", Array.isArray(null));     // false

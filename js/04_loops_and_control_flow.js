@@ -1,290 +1,205 @@
 // ===== ЦИКЛЫ И УПРАВЛЕНИЕ ПОТОКОМ В JAVASCRIPT =====
+console.log("===== ЦИКЛЫ И УПРАВЛЕНИЕ ПОТОКОМ =====");
 
 // === Циклы for ===
+console.log("\n--- Цикл for ---");
 
-// Стандартный цикл for
-for (let i = 0; i < 5; i++) {
-  console.log(i); // Выведет числа от 0 до 4
+// Стандартный цикл for: инициализация; условие; шаг
+console.log("Стандартный for:");
+for (let i = 0; i < 5; i++) { // i от 0 до 4
+  console.log(`  i = ${i}`);
 }
 
-// Цикл for с несколькими переменными
-for (let i = 0, j = 10; i < 5; i++, j--) {
-  console.log(`i = ${i}, j = ${j}`); // i увеличивается, j уменьшается
+// Цикл for с пропуском частей
+let k = 0;
+console.log("For с пропуском инициализации и шага:");
+for (; k < 3;) { // Используем внешнюю переменную k
+  console.log(`  k = ${k}`);
+  k++;
 }
 
-// Пропуск итераций с continue
-for (let i = 0; i < 10; i++) {
-  if (i % 2 === 0) continue; // Пропускаем четные числа
-  console.log(i); // Выведет только нечетные числа: 1, 3, 5, 7, 9
+// Цикл for для перебора массива (менее предпочтительно, чем for...of или forEach)
+const fruitsFor = ["яблоко", "банан", "апельсин"];
+console.log("For для массива:");
+for (let i = 0; i < fruitsFor.length; i++) {
+  console.log(`  Фрукт ${i}: ${fruitsFor[i]}`);
 }
 
-// Досрочное завершение цикла с break
-for (let i = 0; i < 10; i++) {
-  if (i === 5) break; // Выходим из цикла при i = 5
-  console.log(i); // Выведет числа от 0 до 4
+// === Цикл while ===
+console.log("\n--- Цикл while ---");
+// Выполняется, пока условие истинно (проверка перед итерацией)
+let count = 0;
+console.log("Стандартный while:");
+while (count < 3) {
+  console.log(`  count = ${count}`);
+  count++;
 }
+
+// Пример: генерация случайного числа до > 0.5
+let randomNum;
+let attempts = 0;
+console.log("While для случайного числа:");
+while (true) { // Потенциально бесконечный цикл, нужен break
+  attempts++;
+  randomNum = Math.random();
+  console.log(`  Попытка ${attempts}: ${randomNum.toFixed(2)}`);
+  if (randomNum > 0.8) { // Условие выхода
+    console.log(`  Найдено число > 0.8!`);
+    break;
+  }
+  if (attempts > 10) { // Защита от бесконечного цикла
+    console.log("  Превышено число попыток.");
+    break;
+  }
+}
+
+// === Цикл do...while ===
+console.log("\n--- Цикл do...while ---");
+// Выполняется хотя бы один раз, затем проверяется условие
+let choice;
+do {
+  // choice = prompt("Введите 'выход', чтобы закончить:"); // Закомментировано для автоматического выполнения
+  choice = Math.random() > 0.7 ? 'выход' : 'продолжить'; // Имитация ввода
+  console.log(`  Ввод пользователя (имитация): ${choice}`);
+} while (choice !== 'выход');
+console.log("  Цикл do...while завершен.");
 
 // === Цикл for...of ===
+console.log("\n--- Цикл for...of ---");
+// Для перебора значений итерируемых объектов (массивы, строки, Map, Set и др.)
 
-// Перебор элементов массива
-const fruits = ["яблоко", "банан", "апельсин"];
-for (const fruit of fruits) {
-  console.log(fruit);
+// Перебор массива
+const colors = ["красный", "зеленый", "синий"];
+console.log("for...of для массива:");
+for (const color of colors) {
+  console.log(`  Цвет: ${color}`);
 }
-// Вывод:
-// яблоко
-// банан
-// апельсин
 
-// Перебор символов строки
-const str = "Hello";
-for (const char of str) {
-  console.log(char);
+// Перебор строки
+const message = "Привет";
+console.log("for...of для строки:");
+for (const char of message) {
+  console.log(`  Символ: ${char}`);
 }
-// Вывод:
-// H
-// e
-// l
-// l
-// o
 
-// Перебор значений Map
-const map = new Map([
-  ["key1", "value1"],
-  ["key2", "value2"]
-]);
-for (const [key, value] of map) {
-  console.log(`${key}: ${value}`);
+// Перебор Map
+const map = new Map([['a', 1], ['b', 2]]);
+console.log("for...of для Map:");
+for (const [key, value] of map) { // Деструктуризация пары [ключ, значение]
+  console.log(`  ${key} -> ${value}`);
 }
-// Вывод:
-// key1: value1
-// key2: value2
 
-// Перебор значений Set
-const set = new Set([1, 2, 3, 2, 1]); // Дубликаты автоматически удаляются
-for (const value of set) {
-  console.log(value);
+// Перебор Set
+const set = new Set([1, 2, 2, 3, 1]); // Дубликаты игнорируются
+console.log("for...of для Set:");
+for (const num of set) {
+  console.log(`  Значение: ${num}`);
 }
-// Вывод:
-// 1
-// 2
-// 3
 
 // === Цикл for...in ===
-
-// Перебор свойств объекта
+console.log("\n--- Цикл for...in ---");
+// Для перебора КЛЮЧЕЙ (свойств) объекта
+// Внимание: порядок перебора не гарантирован! Перебирает и унаследованные свойства.
 const person = {
   name: "Иван",
   age: 30,
   city: "Москва"
 };
-for (const key in person) {
-  console.log(`${key}: ${person[key]}`);
-}
-// Вывод:
-// name: Иван
-// age: 30
-// city: Москва
+// Добавим метод в прототип для демонстрации
+Object.prototype.inheritedProp = "Это унаследовано";
 
-// Внимание: for...in перебирает также унаследованные свойства
-// Для перебора только собственных свойств используйте проверку:
+console.log("for...in для объекта:");
 for (const key in person) {
-  if (Object.hasOwnProperty.call(person, key)) {
-    console.log(`${key}: ${person[key]}`);
+  console.log(`  Ключ: ${key}, Значение: ${person[key]}`);
+}
+
+// Перебор только собственных свойств объекта
+console.log("for...in только для собственных свойств:");
+for (const key in person) {
+  if (Object.hasOwnProperty.call(person, key)) { // Проверка на собственное свойство
+    console.log(`  Свой ключ: ${key}, Значение: ${person[key]}`);
+  } else {
+    console.log(`  (Унаследованный ключ: ${key})`);
   }
 }
+// Удалим унаследованное свойство, чтобы не мешать дальше
+delete Object.prototype.inheritedProp;
 
-// === Цикл while ===
+// Внимание: Не используйте for...in для перебора массивов! (может перебирать нечисловые ключи)
 
-// Выполняется, пока условие истинно
-let i = 0;
-while (i < 5) {
-  console.log(i); // Выведет числа от 0 до 4
-  i++;
-}
+// === Управление циклами: break и continue ===
+console.log("\n--- break и continue ---");
 
-// Пример с условием в середине цикла
-let j = 0;
-while (j < 10) {
-  j++;
-  if (j % 2 === 0) continue; // Пропускаем четные числа
-  console.log(j); // Выведет только нечетные числа: 1, 3, 5, 7, 9
-  if (j === 7) break; // Выходим из цикла при j = 7
-}
-
-// === Цикл do...while ===
-
-// Выполняется хотя бы один раз, затем проверяется условие
-let k = 0;
-do {
-  console.log(k); // Выведет числа от 0 до 4
-  k++;
-} while (k < 5);
-
-// Пример, когда условие изначально ложно
-let m = 10;
-do {
-  console.log(m); // Выведет 10 (один раз), несмотря на то, что условие ложно
-  m++;
-} while (m < 10);
-
-// === Вложенные циклы ===
-
-// Пример вложенных циклов для работы с двумерным массивом
-const matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];
-
-for (let i = 0; i < matrix.length; i++) {
-  for (let j = 0; j < matrix[i].length; j++) {
-    console.log(`matrix[${i}][${j}] = ${matrix[i][j]}`);
+// break: досрочный выход из цикла
+console.log("Пример с break:");
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    console.log("  Выход из цикла при i = 5");
+    break;
   }
-}
+  console.log(`  i = ${i}`);
+} // Выведет 0, 1, 2, 3, 4
 
-// Пример с метками для выхода из вложенных циклов
-outerLoop: for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 3; j++) {
-    if (i === 1 && j === 1) {
-      console.log("Выход из обоих циклов");
-      break outerLoop; // Выходим из внешнего цикла
+// continue: переход к следующей итерации
+console.log("Пример с continue:");
+for (let i = 0; i < 5; i++) {
+  if (i % 2 === 0) { // Пропускаем четные числа
+    console.log(`  Пропуск четного числа ${i}`);
+    continue;
+  }
+  console.log(`  Нечетное число i = ${i}`);
+} // Выведет 1, 3
+
+// Метки для break/continue во вложенных циклах
+console.log("Пример с метками:");
+outerLoop: for (let i = 1; i <= 3; i++) {
+  console.log(`Внешний цикл: i = ${i}`);
+  for (let j = 1; j <= 3; j++) {
+    console.log(`  Внутренний цикл: j = ${j}`);
+    if (i === 2 && j === 2) {
+      console.log("    Прерываем внешний цикл (break outerLoop)");
+      break outerLoop; // Выход из обоих циклов
     }
-    console.log(`i = ${i}, j = ${j}`);
+    if (i === 1 && j === 1) {
+      console.log("    Переходим к след. итерации внешнего цикла (continue outerLoop)");
+      continue outerLoop; // Переход к i = 2
+    }
   }
 }
 
-// === Методы перебора массивов ===
+// === Обработка ошибок: try...catch...finally ===
+console.log("\n--- try...catch...finally ---");
 
-const numbers = [1, 2, 3, 4, 5];
-
-// forEach - выполняет функцию для каждого элемента массива
-numbers.forEach((number, index) => {
-  console.log(`numbers[${index}] = ${number}`);
-});
-
-// map - создает новый массив с результатами вызова функции для каждого элемента
-const doubled = numbers.map(number => number * 2);
-console.log(doubled); // [2, 4, 6, 8, 10]
-
-// filter - создает новый массив с элементами, прошедшими проверку
-const evenNumbers = numbers.filter(number => number % 2 === 0);
-console.log(evenNumbers); // [2, 4]
-
-// find - возвращает первый элемент, удовлетворяющий условию
-const found = numbers.find(number => number > 3);
-console.log(found); // 4
-
-// some - проверяет, удовлетворяет ли хотя бы один элемент условию
-const hasEven = numbers.some(number => number % 2 === 0);
-console.log(hasEven); // true
-
-// every - проверяет, удовлетворяют ли все элементы условию
-const allPositive = numbers.every(number => number > 0);
-console.log(allPositive); // true
-
-// reduce - сводит массив к одному значению
-const sum = numbers.reduce((total, number) => total + number, 0);
-console.log(sum); // 15
-
-// === Управление потоком с помощью условных операторов ===
-
-// if...else
-const age = 18;
-if (age >= 18) {
-  console.log("Совершеннолетний");
-} else {
-  console.log("Несовершеннолетний");
-}
-
-// if...else if...else
-const score = 85;
-if (score >= 90) {
-  console.log("Отлично");
-} else if (score >= 70) {
-  console.log("Хорошо");
-} else if (score >= 50) {
-  console.log("Удовлетворительно");
-} else {
-  console.log("Неудовлетворительно");
-}
-
-// Тернарный оператор
-const status = age >= 18 ? "Взрослый" : "Ребенок";
-console.log(status); // "Взрослый"
-
-// Вложенные тернарные операторы (лучше избегать для читаемости)
-const grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "D";
-console.log(grade); // "B"
-
-// switch
-const day = 2;
-switch (day) {
-  case 1:
-    console.log("Понедельник");
-    break;
-  case 2:
-    console.log("Вторник");
-    break;
-  case 3:
-    console.log("Среда");
-    break;
-  default:
-    console.log("Другой день");
-}
-
-// switch без break (проваливание)
-const month = 2;
-switch (month) {
-  case 12:
-  case 1:
-  case 2:
-    console.log("Зима");
-    break;
-  case 3:
-  case 4:
-  case 5:
-    console.log("Весна");
-    break;
-  default:
-    console.log("Другое время года");
-}
-
-// === Обработка ошибок с try...catch ===
-
-// Базовый пример
 try {
+  console.log("Начало блока try");
   // Код, который может вызвать ошибку
-  console.log(undefinedVariable); // Переменная не определена
-} catch (error) {
-  // Обработка ошибки
-  console.log("Произошла ошибка:", error.message);
-}
-console.log("Выполнение продолжается"); // Этот код выполнится
-
-// try...catch...finally
-try {
-  // Код, который может вызвать ошибку
-  throw new Error("Пример ошибки");
-} catch (error) {
-  // Обработка ошибки
-  console.log("Ошибка:", error.message);
-} finally {
-  // Этот блок выполнится в любом случае
-  console.log("Блок finally выполнен");
+  // let result = 10 / 0; // Ошибка деления на ноль (Infinity) - не вызывает исключение
+  // console.log(nonExistentVariable); // Ошибка ReferenceError
+  throw new Error("Искусственная ошибка!"); // Генерируем ошибку сами
+  console.log("Этот код не выполнится"); // Не выполнится, если была ошибка
+} catch (error) { // Блок выполняется, если в try произошла ошибка
+  console.error("!!! Поймана ошибка !!!");
+  console.error("  Тип ошибки:", error.name); // Имя ошибки (e.g., ReferenceError, Error)
+  console.error("  Сообщение:", error.message); // Сообщение об ошибке
+  // console.error("  Стек вызовов:", error.stack); // Полный стек вызовов
+} finally { // Блок выполняется всегда, независимо от наличия ошибки
+  console.log("Блок finally выполнен.");
 }
 
-// Создание собственных ошибок
-function divide(a, b) {
-  if (b === 0) {
-    throw new Error("Деление на ноль недопустимо");
+console.log("Выполнение программы продолжается после try...catch");
+
+// Пример функции с обработкой ошибок
+function parseJsonSafe(jsonString) {
+  try {
+    const data = JSON.parse(jsonString);
+    console.log("JSON успешно разобран:", data);
+    return data;
+  } catch (error) {
+    console.error(`Ошибка разбора JSON: ${error.message}`);
+    return null; // Возвращаем null при ошибке
   }
-  return a / b;
 }
 
-try {
-  console.log(divide(10, 2)); // 5
-  console.log(divide(10, 0)); // Вызовет ошибку
-} catch (error) {
-  console.log("Ошибка при делении:", error.message);
-}
+parseJsonSafe('{"name": "Иван", "age": 30}'); // Успешно
+parseJsonSafe('{"name": "Иван", age: 30}'); // Ошибка (age без кавычек)
+parseJsonSafe('невалидный json'); // Ошибка

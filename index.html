@@ -8,35 +8,12 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>JavaScript: Полное руководство для изучения</title>
-    <style>
-        /* Дополнительные стили для кнопки темы, если нужно */
-        #theme-toggle {
-            position: absolute;
-            top: 20px;
-            /* Пример позиционирования */
-            right: 20px;
-            /* Пример позиционирования */
-            z-index: 100;
-            /* Чтобы была поверх других элементов */
-            /* Стили кнопки можно взять из .controls button в style.css или задать свои */
-            background: #1f6feb;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        body.light-theme #theme-toggle {
-            background: #58a6ff;
-            color: #0d1117;
-        }
-    </style>
 </head>
 
 <body>
@@ -44,20 +21,20 @@
 
     <header>
         <div class="container">
-            <h1>JavaScript: Полное руководство для изучения</h1>
             <button id="theme-toggle">Светлая тема</button>
+            <h1>JavaScript: Полное руководство для изучения</h1>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Главная</a></li>
-                    <li><a href="partials/learning_guide.html">Гайд по обучению</a></li>
-                    <li><a href="partials/basics.html">Основы</a></li>
-                    <li><a href="partials/arrays.html">Массивы</a></li>
-                    <li><a href="partials/functions.html">Функции</a></li>
-                    <li><a href="partials/loops.html">Циклы</a></li>
-                    <li><a href="partials/objects.html">Объекты</a></li>
-                    <li><a href="partials/exercises.html">Упражнения</a></li>
-                    <li><a href="partials/projects.html">Проекты</a></li>
-                    <li><a href="partials/resources.html">Ресурсы</a></li>
+                    <li><a href="/partials/learning_guide.html">Гайд по обучению</a></li>
+                    <li><a href="/partials/basics.html">Основы</a></li>
+                    <li><a href="/partials/arrays.html">Массивы</a></li>
+                    <li><a href="/partials/functions.html">Функции</a></li>
+                    <li><a href="/partials/loops.html">Циклы</a></li>
+                    <li><a href="/partials/objects.html">Объекты</a></li>
+                    <li><a href="/partials/exercises.html">Упражнения</a></li>
+                    <li><a href="/partials/projects.html">Проекты</a></li>
+                    <li><a href="/partials/resources.html">Ресурсы</a></li>
                 </ul>
             </nav>
         </div>
@@ -162,6 +139,12 @@
     <script src="main.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        // Вызываем подсветку Prism после загрузки DOM
+        document.addEventListener('DOMContentLoaded', (event) => {
+            Prism.highlightAll();
+        });
+    </script>
 </body>
 
 </html>
